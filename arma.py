@@ -92,10 +92,10 @@ class Arma:
 		"""Disminuye el tiempo de recarga, al llegar a cero el arma 
 		vuelve a estar disponible"""
 		if(self.disponible):
-            return
-        self.cantidad_de_recargas_faltantes-=1
-        if(self.cantidad_de_recargas_faltantes<=0):
-            self.disponible=True
+			return
+		self.cantidad_de_recargas_faltantes-=1
+		if(self.cantidad_de_recargas_faltantes<=0):
+			self.disponible=True
 
 def agregar_armas_parte(parte):
 	"""Recibe un parte y la quipa con armas."""

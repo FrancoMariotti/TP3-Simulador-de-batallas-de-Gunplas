@@ -33,14 +33,14 @@ class Cola():
         valor. Si la cola está vacía, levanta ValueError. """
 		# Si hay un nodo para desencolar
 		if not self.primero:
-            raise ValueError("La cola está vacía")
-        valor = self.primero.dato
-        self.primero = self.primero.prox
+			raise ValueError("La cola está vacía")
+		valor = self.primero.dato
+		self.primero = self.primero.prox
         # Si después de avanzar no quedó nada, también hay que
         # eliminar la referencia del último.
-        if not self.primero:
-            self.ultimo = None
-        return valor
+		if not self.primero:
+			self.ultimo = None
+		return valor
 
 	
 	def esta_vacia(self):

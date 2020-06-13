@@ -125,13 +125,12 @@ class Gunpla():
 				danio_reducido*=FACTOR_DANIO
 			if(armas_combinables):
 				arma_combinable = armas_combinables.pop()
-                
-                tipo = arma_combinable.get_tipo()
-                probabilidad = 0
-                if(tipo = Arma.MELEE):
-                    probabilidad = PROBABILIDAD_MELEE
-                else
-                    probabilidad = PROBABILIDAD_RANGO
+				tipo = arma_combinable.get_tipo()
+				probabilidad = 0
+				if(tipo == Arma.MELEE):
+					probabilidad = PROBABILIDAD_MELEE
+				else:
+					probabilidad = PROBABILIDAD_RANGO
                         
 				if(random.uniform(PROBABILIDAD_INICIO,PROBABILIDAD_FINAL) <= probabilidad):
 					arma_combinable.utilizar()

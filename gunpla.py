@@ -17,7 +17,7 @@ class Gunpla():
 		"""Inicializa un gunpla con su esqueleto. Lanza TypeError si el 
 		esqueleto recibido no es una intancia de la Clase Esqueleto"""
 		self.nombre=nombre
-		if(esqueleto == None or not isinstance(esqueleto, Esqueleto)):
+		if(not esqueleto or not isinstance(esqueleto, Esqueleto)):
 			raise TypeError("El parametro recibido no es del tipo esperado")
 		self.esqueleto = esqueleto
 		self.equipo = None
@@ -125,14 +125,19 @@ class Gunpla():
 				danio_reducido*=FACTOR_DANIO
 			if(armas_combinables):
 				arma_combinable = armas_combinables.pop()
-				if(arma_combinable.get_tipo()==Arma.MELEE and random.uniform(PROBABILIDAD_INICIO,PROBABILIDAD_FINAL) <=PROBABILIDAD_MELEE):
+                
+                tipo = arma_combinable.get_tipo()
+                probabilidad = 0
+                if(tipo = Arma.MELEE):
+                    probabilidad = PROBABILIDAD_MELEE
+                else
+                    probabilidad = PROBABILIDAD_RANGO
+                        
+				if(random.uniform(PROBABILIDAD_INICIO,PROBABILIDAD_FINAL) <= probabilidad):
 					arma_combinable.utilizar()
 					self.armas_descargadas.append(arma_combinable)
 					return danio_reducido + self.__calcular_danio(arma_combinable,armas_combinables,danio_reducido)
-				elif(arma_combinable.get_tipo()==Arma.RANGO and random.uniform(PROBABILIDAD_INICIO,PROBABILIDAD_FINAL)<=PROBABILIDAD_RANGO):
-					arma_combinable.utilizar()
-					self.armas_descargadas.append(arma_combinable)
-					return danio_reducido + self.__calcular_danio(arma_combinable,armas_combinables,danio_reducido)
+				
 		return danio_reducido
 	
 	

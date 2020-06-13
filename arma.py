@@ -30,7 +30,6 @@ class Arma:
 		self.precision = random.randint(MINIMA_PRECISION,MAXIMA_PRECISION)
 		self.tiempo_de_recarga = random.randint(1,4)
 		self.disponible = True
-		self.tipo_de_parte="Arma"
 		self.cantidad_de_recargas_faltantes=0
 	
 	def get_clase(self):
@@ -76,7 +75,7 @@ class Arma:
 		
 	def get_tipo_parte(self):
 		"""Devuelve el tipo de parte de un arma"""
-		return self.tipo_de_parte
+		return "Arma"
 		
 	def utilizar(self):
 		"""Utiliza el arma asignando el tiempo de recarga.Luego el arma 
@@ -92,10 +91,11 @@ class Arma:
 	def recargar(self):
 		"""Disminuye el tiempo de recarga, al llegar a cero el arma 
 		vuelve a estar disponible"""
-		if(not self.disponible):
-			self.cantidad_de_recargas_faltantes-=1
-			if(self.cantidad_de_recargas_faltantes<=0):
-				self.disponible=True
+		if(self.disponible):
+            return
+        self.cantidad_de_recargas_faltantes-=1
+        if(self.cantidad_de_recargas_faltantes<=0):
+            self.disponible=True
 
 def agregar_armas_parte(parte):
 	"""Recibe un parte y la quipa con armas."""
@@ -107,7 +107,7 @@ def agregar_armas_parte(parte):
 	
 		
 def generar_lista_armas():
-	"""No recibe nada. Y devuelve una lista de armas random."""
+	"""Devuelve una lista de armas random."""
 	armas={}
 	
 	tipos_arma=(Arma.MELEE,Arma.RANGO)

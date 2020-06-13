@@ -15,6 +15,7 @@ class Pila:
 			Si la pila está vacía levanta una excepción."""
 		if(self.esta_vacia()):
 			raise ValueError("La pila está vacía")
+		self.tope -= 1
 		return self.elementos.pop()
 		
 	def esta_vacia(self):
